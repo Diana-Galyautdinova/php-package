@@ -16,7 +16,11 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.actor }}/php-package:latest .
+        run: |
+          username=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
+          docker build -t ghcr.io/$username/php-package:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.actor }}/php-package:latest
+        run: |
+          username=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
+          docker push ghcr.io/$username/php-package:latest
