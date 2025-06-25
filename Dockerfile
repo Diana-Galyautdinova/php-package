@@ -16,9 +16,21 @@ RUN apt-get update && apt-get install -y \
     git \
     npm \
     net-tools \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    pkg-config \
+    libicu-dev \
+    zlib1g-dev \
+    libreadline-dev \
+    libedit-dev \
+    libsqlite3-dev \
+    libpq-dev \
+    libredis-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
-    && docker-php-ext-install mysqli pdo pdo_mysql
+    && docker-php-ext-install mysqli pdo pdo_mysql \
+    && pecl install redis \
+    && docker-php-ext-enable redis
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
