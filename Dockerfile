@@ -16,15 +16,6 @@ RUN apt-get update && apt-get install -y \
     git \
     npm \
     net-tools \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    pkg-config \
-    libicu-dev \
-    zlib1g-dev \
-    libreadline-dev \
-    libedit-dev \
-    libsqlite3-dev \
-    libpq-dev \
     libredis-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
