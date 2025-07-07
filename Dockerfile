@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     git \
     npm \
     net-tools \
+    supervisor \
+    && mkdir -p /var/log/supervisor \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && docker-php-ext-install mysqli pdo pdo_mysql \
